@@ -9,7 +9,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-:root{--ink:#131E27;--ink2:#0E1820;--sand2:#F5EFE6;--stone2:#C4A882;--teal:#4BA897;--teal2:#6BBFB4;--white:#F5EFE6;--muted:#7A9A91;--serif:'Fraunces',serif}
+:root{--ink:#131E27;--ink2:#0E1820;--sand2:#F5EFE6;--stone2:#C4A882;--teal:#4BA897;--teal2:#6BBFB4;--white:#F5EFE6;--muted:#7A9A91;--serif:'Fraunces',serif;--accent:#B8763F}
 body{font-family:'Jost',sans-serif;font-weight:300;background:var(--ink);color:var(--white);overflow-x:hidden}
 
 /* INTRO */
@@ -60,17 +60,22 @@ nav.scrolled{background:rgba(14,24,32,.97);backdrop-filter:blur(12px);padding:12
 
 /* HERO */
 .hero{height:100vh;min-height:600px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background-image:url('https://drive.google.com/thumbnail?id=1tpxaH5k_XAofVgtsDwd-XDSPcFRTCYUH&sz=w1600');background-size:cover;background-position:center;transform:scale(1.05);transition:transform 12s ease}
+.hero-bg{position:absolute;inset:0;background-image:url('https://drive.google.com/thumbnail?id=18ZPRytUgBI1W13mdymkvqxgVbHIXftlt&sz=w1600');background-size:cover;background-position:center;transform:scale(1.05);transition:transform 12s ease}
 .hero-bg.ken{transform:scale(1)}
 .hero-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,24,32,.95) 0%,rgba(14,24,32,.4) 55%,rgba(14,24,32,.1) 100%)}
 .hero-content{position:relative;z-index:2;padding:0 60px 72px;width:100%}
 .hero-eyebrow{font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--stone2);margin-bottom:20px;display:inline-flex;align-items:center;gap:16px;text-shadow:0 1px 8px rgba(14,24,32,.9)}
+@keyframes badge-pulse{0%,100%{box-shadow:0 0 0 0 rgba(184,118,63,.4)}50%{box-shadow:0 0 0 9px rgba(184,118,63,0)}}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;font-size:13px;font-weight:700;letter-spacing:.03em;padding:11px 20px 11px 16px;margin-bottom:22px;animation:badge-pulse 2.4s ease-in-out infinite;box-shadow:0 6px 20px rgba(184,118,63,.35);text-decoration:none;cursor:pointer;transition:background .2s,transform .2s}
+.hero-badge:hover{background:#CC8749;transform:translateY(-2px)}
+.hero-badge svg{width:16px;height:16px;flex-shrink:0}
 .hero-eyebrow::before{content:'';display:block;width:48px;height:1px;background:var(--stone2)}
 .hero h1{font-family:var(--serif);font-size:clamp(40px,5.5vw,78px);font-weight:500;line-height:1.05;color:var(--white);text-shadow:0 2px 24px rgba(14,24,32,.6);margin-bottom:28px;letter-spacing:-.01em}
 .hero h1 em{font-style:italic;color:var(--stone2);font-weight:300}
 .hero h1 strong{font-weight:500;color:var(--white)}
 .hero-lower{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:28px}
-.hero-desc{font-size:14px;font-weight:300;line-height:1.8;color:rgba(245,239,230,.7);max-width:420px;text-shadow:0 1px 12px rgba(14,24,32,.8)}
+.hero-desc{font-family:var(--serif);font-size:clamp(18px,2vw,24px);font-weight:400;font-style:italic;line-height:1.35;color:var(--white);max-width:480px;text-shadow:0 2px 16px rgba(14,24,32,.7)}
+.hero-desc em{color:var(--stone2);font-style:italic}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
 .btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--stone2);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:16px 32px;text-decoration:none;transition:background .2s;white-space:nowrap}
 .btn-gold:hover{background:#D4B870}
@@ -312,11 +317,15 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-veil"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Privada Residencial · Cholul, Mérida · Últimas unidades</div>
+    <div class="hero-eyebrow">Privada Residencial Premium · Cholul, Mérida</div>
+    <a class="hero-badge" href="disponible.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></svg>
+      Tu casa lista en 60 días
+    </a>
     <h1>80 familias<br>ya encontraron<br><em>su hogar aquí.</em></h1>
     <div class="hero-lower">
       <div>
-        <p class="hero-desc">Solo quedan 2 casas en construcción y 19 lotes en Cholul. Diseño del Arq. Davy López Ceballos, seguridad 24/7 y la zona de mayor plusvalía en Mérida.</p>
+        <p class="hero-desc">Tu última oportunidad de vivir en una comunidad <em>premium consolidada.</em></p>
         <div class="hero-btns">
           <a class="btn-gold" href="#" onclick="showLead(event,'disponible.html')">VER DISPONIBILIDAD →</a>
           <a class="btn-outline" href="#" onclick="showLead(event,'disponible.html#lotes')">Ver lotes desde $1.1M</a>
