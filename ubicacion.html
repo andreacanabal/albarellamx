@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ubicación y Contacto · Albarella Privada Residencial</title>
-<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,700;1,200;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-:root{--ink:#131E27;--ink2:#0E1820;--sand2:#F5EFE6;--stone2:#C4A882;--teal:#4BA897;--teal2:#6BBFB4;--white:#F5EFE6;--muted:#7A9A91}
+:root{--ink:#131E27;--ink2:#0E1820;--sand2:#F5EFE6;--stone2:#C4A882;--teal:#4BA897;--teal2:#6BBFB4;--white:#F5EFE6;--muted:#7A9A91;--serif:'Fraunces',serif}
 body{font-family:'Jost',sans-serif;font-weight:300;background:var(--ink);color:var(--white);overflow-x:hidden}
 .wa{position:fixed;bottom:28px;right:28px;z-index:999;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:transform .2s}
 .wa:hover{transform:scale(1.1)}.wa svg{width:28px;height:28px;fill:white}
@@ -32,10 +32,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 .overline{font-size:9px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
 .overline.gold{color:var(--stone2)}
-.h2{font-size:clamp(28px,3.5vw,48px);font-weight:200;line-height:1.1;letter-spacing:-.01em}
+.h2{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:500;line-height:1.1;letter-spacing:-.01em}
 .h2 em{font-style:italic;color:var(--teal2)}
 .h2.sand{color:var(--ink)}.h2.sand em{color:var(--teal)}
-.fade-up{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.fade-up.d1{transition-delay:.08s}
+.fade-up.d2{transition-delay:.16s}
+.fade-up.d3{transition-delay:.24s}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
 /* PAGE HEADER */
@@ -52,14 +55,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .ubi-points{display:flex;flex-direction:column}
 .up{display:flex;gap:20px;align-items:center;padding:20px 0;border-bottom:1px solid rgba(245,239,230,.06)}
 .up:last-child{border-bottom:none}
-.up-ico{font-size:22px;min-width:40px;text-align:center}
+.up-ico{font-size:22px;min-width:40px;text-align:center;color:var(--teal2);display:inline-flex;justify-content:center}
 .up-n{font-size:26px;font-weight:200;color:var(--white);min-width:66px;line-height:1;letter-spacing:-.01em}
 .up-l strong{display:block;font-size:13px;font-weight:400;color:rgba(245,239,230,.8);margin-bottom:2px}
 .up-l span{font-size:11px;font-weight:300;color:rgba(245,239,230,.38)}
 
 /* ORIENTACIÓN */
 .ori-banner{background:var(--ink2);padding:36px 60px;display:flex;gap:20px;align-items:flex-start;border-top:1px solid rgba(245,239,230,.04)}
-.ori-ico{font-size:24px;flex-shrink:0;margin-top:2px}
+.ori-ico{font-size:24px;flex-shrink:0;margin-top:2px;color:var(--stone2)}
 .ori-title{font-size:13px;font-weight:500;color:var(--white);margin-bottom:5px}
 .ori-desc{font-size:13px;font-weight:300;line-height:1.7;color:rgba(245,239,230,.45);max-width:580px}
 
@@ -73,7 +76,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .c-desc{font-size:14px;font-weight:300;line-height:1.8;color:#5A7A72;margin-bottom:32px}
 .c-items{display:flex;flex-direction:column;gap:18px}
 .ci{display:flex;gap:16px;align-items:center}
-.ci-ico{width:42px;height:42px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ci-ico{width:42px;height:42px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--white);flex-shrink:0}
 .ci-ico.wa-bg{background:#25D366}
 .ci-ico.ig-bg{background:var(--stone2)}
 .ci-ico.hr-bg{background:#5A8A7A}
@@ -164,17 +167,17 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
       <a class="btn-map" href="https://maps.app.goo.gl/MpAHjph71m1p7JNN8" target="_blank">Ver en Google Maps →</a>
     </div>
     <div class="ubi-points">
-      <div class="up"><div class="up-ico">🛒</div><div class="up-n">10'</div><div class="up-l"><strong>Plazas comerciales</strong><span>Plaza Altabrisa, City Center</span></div></div>
-      <div class="up"><div class="up-ico">🏥</div><div class="up-n">10'</div><div class="up-l"><strong>Hospitales</strong><span>Star Médica, Alta Especialidad</span></div></div>
-      <div class="up"><div class="up-ico">🌊</div><div class="up-n">20'</div><div class="up-l"><strong>La playa</strong><span>Chicxulub Puerto · Progreso</span></div></div>
-      <div class="up"><div class="up-ico">🎓</div><div class="up-n">—</div><div class="up-l"><strong>Universidades</strong><span>Universidad Modelo, CEY, UADY</span></div></div>
+      <div class="up"><div class="up-ico"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2.5 3h2.5l2.6 12.3a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 2-1.6L21.5 7H6"/></svg></div><div class="up-n">10'</div><div class="up-l"><strong>Plazas comerciales</strong><span>Plaza Altabrisa, City Center</span></div></div>
+      <div class="up"><div class="up-ico"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="1.5"/><path d="M12 8v8M8 12h8"/></svg></div><div class="up-n">10'</div><div class="up-l"><strong>Hospitales</strong><span>Star Médica, Alta Especialidad</span></div></div>
+      <div class="up"><div class="up-ico"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8c.7.6 1.4 1.2 2.9 1.2C7.8 9.2 7.8 6.8 10.7 6.8s2.9 2.4 5.8 2.4c1.5 0 2.2-.6 2.9-1.2"/><path d="M2 14c.7.6 1.4 1.2 2.9 1.2 2.9 0 2.9-2.4 5.8-2.4s2.9 2.4 5.8 2.4c1.5 0 2.2-.6 2.9-1.2"/><path d="M2 20c.7.6 1.4 1.2 2.9 1.2 2.9 0 2.9-2.4 5.8-2.4s2.9 2.4 5.8 2.4c1.5 0 2.2-.6 2.9-1.2"/></svg></div><div class="up-n">20'</div><div class="up-l"><strong>La playa</strong><span>Chicxulub Puerto · Progreso</span></div></div>
+      <div class="up"><div class="up-ico"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9 12 4l10 5-10 5z"/><path d="M6 11.3v5c0 1.3 2.7 3.2 6 3.2s6-1.9 6-3.2v-5"/><path d="M21 9.5v6"/></svg></div><div class="up-n">—</div><div class="up-l"><strong>Universidades</strong><span>Universidad Modelo, CEY, UADY</span></div></div>
     </div>
   </div>
 </section>
 
 <!-- ORIENTACIÓN -->
 <div class="ori-banner">
-  <div class="ori-ico">🧭</div>
+  <div class="ori-ico"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="m15 9-1.8 4.2L9 15l1.8-4.2z"/></svg></div>
   <div>
     <div class="ori-title">Orientación estratégica Norte–Sur</div>
     <div class="ori-desc">Todos los lotes de Albarella están orientados para maximizar la ventilación natural y reducir el calor en el clima yucateco — un detalle de diseño que marca la diferencia en el día a día.</div>
@@ -198,19 +201,19 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
       <p class="c-desc">Estamos disponibles para mostrarte la privada, resolver tus dudas sobre financiamiento y acompañarte en cada paso del proceso de compra.</p>
       <div class="c-items">
         <div class="ci">
-          <div class="ci-ico">📞</div>
+          <div class="ci-ico"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3.2l1.3 4.5L7.5 10a12 12 0 0 0 6.5 6.5l1.5-2 4.5 1.3V19a2 2 0 0 1-2.2 2C10.5 20.5 3.5 13.5 3 6.2A2 2 0 0 1 5 4z"/></svg></div>
           <div><div class="ci-t">Teléfono directo</div><a class="ci-v" href="tel:+525535919044">+52 55 3591 9044</a></div>
         </div>
         <div class="ci">
-          <div class="ci-ico wa-bg">💬</div>
+          <div class="ci-ico wa-bg"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H9l-4.5 3.5V17.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z"/></svg></div>
           <div><div class="ci-t">WhatsApp</div><a class="ci-v" href="https://wa.me/525535919044?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Albarella" target="_blank">Escríbenos ahora</a></div>
         </div>
         <div class="ci">
-          <div class="ci-ico ig-bg">📱</div>
+          <div class="ci-ico ig-bg"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg></div>
           <div><div class="ci-t">Instagram</div><a class="ci-v" href="https://instagram.com/albarellamx" target="_blank">@albarellamx</a></div>
         </div>
         <div class="ci">
-          <div class="ci-ico hr-bg">🕐</div>
+          <div class="ci-ico hr-bg"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></svg></div>
           <div><div class="ci-t">Horario de atención</div><div class="ci-v" style="cursor:default;pointer-events:none">Lun–Sáb 9am–6pm · Dom 9am–3pm</div></div>
         </div>
       </div>
