@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Albarella · Casas y lotes disponibles. Entrega en 60 días. Lotes desde $1.1M con financiamiento.">
 <title>Disponible · Albarella Privada Residencial</title>
-<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,700;1,200;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-:root{--ink:#131E27;--ink2:#0E1820;--sand2:#F5EFE6;--stone2:#C4A882;--teal:#4BA897;--teal2:#6BBFB4;--white:#F5EFE6;--muted:#7A9A91}
+:root{--ink:#131E27;--ink2:#0E1820;--sand2:#F5EFE6;--stone2:#C4A882;--teal:#4BA897;--teal2:#6BBFB4;--white:#F5EFE6;--muted:#7A9A91;--serif:'Fraunces',serif}
 body{font-family:'Jost',sans-serif;font-weight:300;background:var(--ink);color:var(--white);overflow-x:hidden}
 .wa{position:fixed;bottom:28px;right:28px;z-index:999;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:transform .2s}
 .wa:hover{transform:scale(1.1)}.wa svg{width:28px;height:28px;fill:white}
@@ -35,7 +35,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .page-hdr{padding:120px 60px 60px;background:var(--ink2);border-bottom:1px solid rgba(245,239,230,.05)}
 .overline{font-size:9px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
 .overline.gold{color:var(--stone2)}
-.h2{font-size:clamp(28px,3.5vw,48px);font-weight:200;line-height:1.1;letter-spacing:-.01em;color:var(--white)}
+.h2{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:500;line-height:1.1;letter-spacing:-.01em;color:var(--white)}
 .h2 em{font-style:italic;color:var(--teal2)}
 .h2.sand{color:var(--ink)}
 .h2.sand em{color:var(--teal)}
@@ -54,13 +54,37 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:2}
 .dot{width:6px;height:6px;border-radius:50%;background:rgba(245,239,230,.3);cursor:pointer;transition:background .3s,transform .3s}
 .dot.active{background:var(--stone2);transform:scale(1.3)}
+.thumbs{position:absolute;bottom:0;left:0;right:0;z-index:2;display:flex;gap:5px;padding:12px;overflow-x:auto;background:linear-gradient(to top,rgba(10,18,25,.75),transparent)}
+.thumb{width:56px;height:40px;background-size:cover;background-position:center;cursor:pointer;opacity:.45;transition:opacity .25s,transform .25s;flex-shrink:0;border:1px solid transparent}
+.thumb:hover{opacity:.8}
+.thumb.active{opacity:1;border-color:var(--stone2);transform:translateY(-2px)}
+.expand-btn{position:absolute;top:16px;right:16px;z-index:3;background:rgba(14,24,32,.6);border:1px solid rgba(196,168,130,.25);color:var(--stone2);width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
+.expand-btn:hover{background:rgba(14,24,32,.9);border-color:var(--stone2)}
+.tour-label{position:absolute;top:16px;left:16px;z-index:3;font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sand2);background:rgba(14,24,32,.6);border:1px solid rgba(196,168,130,.25);padding:7px 12px;display:flex;align-items:center;gap:6px}
+.tour-label svg{width:12px;height:12px;flex-shrink:0}
+.plano-cta{display:flex;align-items:center;gap:12px;border:1px solid rgba(245,239,230,.12);padding:14px 16px;margin-bottom:28px;text-decoration:none;transition:border-color .2s,background .2s}
+.plano-cta:hover{border-color:rgba(196,168,130,.4);background:rgba(196,168,130,.05)}
+.plano-cta-ico{width:22px;height:22px;color:var(--stone2);flex-shrink:0}
+.plano-cta-t{font-size:12px;font-weight:400;color:var(--white)}
+.plano-cta-d{font-size:10.5px;font-weight:300;color:rgba(245,239,230,.45);margin-top:1px}
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:4000;background:rgba(10,18,25,.97);display:none;align-items:center;justify-content:center;padding:40px}
+.lightbox.open{display:flex}
+.lb-img{max-width:88vw;max-height:82vh;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lb-close{position:absolute;top:24px;right:28px;color:rgba(245,239,230,.6);font-size:28px;cursor:pointer;background:none;border:none;line-height:1}
+.lb-close:hover{color:var(--white)}
+.lb-arr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(245,239,230,.08);border:1px solid rgba(245,239,230,.2);color:var(--white);width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px}
+.lb-arr:hover{background:rgba(245,239,230,.16)}
+.lb-arr.prev{left:24px}.lb-arr.next{right:24px}
+.lb-caption{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,239,230,.5)}
+@media(max-width:900px){.lb-arr{width:38px;height:38px}.thumb{width:44px;height:32px}}
 .reveal-right{padding:52px 48px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid rgba(245,239,230,.05)}
 .rtag{display:inline-flex;align-items:center;gap:10px;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff;padding:7px 16px;margin-bottom:26px;width:fit-content}
 .rtag.now{background:var(--teal);animation:pulse-rtag 2.2s ease-in-out infinite}
 .rtag.soon{background:rgba(196,168,130,.2);color:var(--stone2);border:1px solid rgba(196,168,130,.35)}
 .rtag-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.8)}
 .rtag.soon .rtag-dot{background:var(--stone2)}
-.r-title{font-size:clamp(28px,3vw,44px);font-weight:200;color:var(--white);line-height:1.15;margin-bottom:32px;letter-spacing:-.01em}
+.r-title{font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:500;color:var(--white);line-height:1.15;margin-bottom:32px;letter-spacing:-.01em}
 .r-title em{font-style:italic;color:var(--stone2)}
 .r-specs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid rgba(245,239,230,.07)}
 .rs-l{font-size:8px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,239,230,.3);margin-bottom:4px}
@@ -71,13 +95,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 /* LOTES */
 .lotes-sec{background:var(--sand2);padding:72px 60px}
+.lotes-pitch{max-width:680px;margin-bottom:44px}
+.lotes-pitch-desc{font-size:14.5px;font-weight:300;color:#4A6A62;line-height:1.85;margin-top:16px}
+.lotes-bullets{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.lb-item{font-size:14px;font-weight:300;color:var(--ink);display:flex;align-items:center;gap:10px}
+.lb-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.lb-item strong{font-weight:500;color:var(--teal)}
 .lotes-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:24px}
 .lnums{display:flex;gap:36px;flex-wrap:wrap}
 .ln{border-left:2px solid var(--teal);padding-left:16px}
 .ln-n{font-size:40px;font-weight:200;color:var(--ink);line-height:1;letter-spacing:-.01em}
 .ln-l{font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:4px}
 .lotes-btns{display:flex;gap:10px;flex-wrap:wrap}
-.btn-map{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(75,168,151,.35);color:var(--teal);font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:11px 20px;text-decoration:none;transition:background .2s}
+.btn-map{display:inline-flex;align-items:center;gap:8px;font-size:14px;line-height:1;border:1px solid rgba(75,168,151,.35);color:var(--teal);font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:11px 20px;text-decoration:none;transition:background .2s}
 .btn-map:hover{background:rgba(75,168,151,.08)}
 .lotes-table{width:100%;border-collapse:collapse}
 .lotes-table th{font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 16px;border-bottom:2px solid rgba(19,30,39,.1)}
@@ -86,6 +116,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .td-price{font-weight:500;color:var(--ink);font-size:15px}
 .td-fin{color:var(--muted);font-size:12px}
 .avail{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:rgba(75,168,151,.12);color:var(--teal);padding:3px 10px}
+
+/* FINANCIAMIENTO */
+.fin-sec{background:var(--sand2);padding:0 60px 80px}
+.fin-hdr{max-width:640px;margin-bottom:40px}
+.fin-hdr .h2{color:var(--ink)}
+.fin-hdr .h2 em{color:#2E7D6E}
+.fin-desc{font-size:14px;font-weight:300;color:#4A6A62;line-height:1.8;margin-top:16px;max-width:540px}
+.fin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(19,30,39,.08);margin-bottom:36px}
+.fin-card{background:var(--sand2);padding:28px 24px;transition:transform .3s ease,box-shadow .3s ease}
+.fin-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(19,30,39,.08)}
+.fin-card-ico{width:34px;height:34px;color:var(--teal);margin-bottom:14px}
+.fin-card-t{font-family:var(--serif);font-size:17px;font-weight:500;color:var(--ink);margin-bottom:8px}
+.fin-card-d{font-size:12.5px;font-weight:300;color:#5A7A72;line-height:1.7}
+.fin-bank-row{display:flex;flex-wrap:wrap;gap:10px}
+.fin-bank{font-family:var(--serif);font-size:13px;font-weight:500;color:var(--ink);background:#fff;border:1px solid rgba(19,30,39,.1);padding:9px 18px}
+@media(max-width:900px){.fin-grid{grid-template-columns:1fr}}
 
 /* BARRA DISPONIBILIDAD */
 @keyframes fill-bar{from{width:0}to{width:21%}}
@@ -109,7 +155,10 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
 .f-tel:hover{color:var(--stone2)}
 .f-hours{font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,239,230,.32)}
 .f-right{text-align:right;font-size:10px;color:rgba(245,239,230,.2);font-weight:300;line-height:1.8}
-.fade-up{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.fade-up.d1{transition-delay:.08s}
+.fade-up.d2{transition-delay:.16s}
+.fade-up.d3{transition-delay:.24s}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
 @media(max-width:900px){
@@ -172,6 +221,10 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
     <a class="btn-teal" href="https://wa.me/525535919044?text=Hola%2C%20me%20interesa%20el%20Lote%2066%20Modelo%20C%20Doble%20Altura%20en%20Albarella" target="_blank">Solicitar información</a>
   </div>
   <div class="reveal-left">
+    <div class="tour-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg> Recorrido fotográfico</div>
+    <button class="expand-btn" onclick="openLightbox('C')" aria-label="Ampliar galería">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+    </button>
     <div class="photos" id="photosC">
       <div class="rph active" style="background-image:url('https://drive.google.com/thumbnail?id=1Tndns4O8_mhC1ssr83j4UOUp2lFjYzdt&sz=w900')"></div>
       <div class="rph" style="background-image:url('https://drive.google.com/thumbnail?id=1Eat9epumCoeddv7aJscpBbtGapWKn80l&sz=w900')"></div>
@@ -186,15 +239,15 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
     </div>
     <button class="arr prev" data-id="C" data-dir="-1">&#8592;</button>
     <button class="arr next" data-id="C" data-dir="1">&#8594;</button>
-    <div class="dots" id="dotsC">
-      <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-    </div>
+    <div class="thumbs" id="dotsC"></div>
   </div>
   <div class="reveal-right">
     <div class="rtag soon"><span class="rtag-dot"></span>Lista en 60 días</div>
     <h3 class="r-title">Modelo C<br><em>Doble Altura</em></h3>
+    <a class="plano-cta" href="https://wa.me/525535919044?text=Hola%2C%20quiero%20el%20plano%20arquitect%C3%B3nico%20del%20Modelo%20C%20de%20Albarella" target="_blank">
+      <svg class="plano-cta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 12 4l9 5v10l-9 5-9-5z"/><path d="M3 9l9 5 9-5M12 14v10"/></svg>
+      <div><div class="plano-cta-t">Plano arquitectónico del Modelo C</div><div class="plano-cta-d">Solicítalo con tu asesor y te lo enviamos por WhatsApp</div></div>
+    </a>
     <div class="r-specs">
       <div><div class="rs-l">Lote</div><div class="rs-v">66</div></div>
       <div><div class="rs-l">Plantas</div><div class="rs-v">2</div></div>
@@ -218,6 +271,10 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
     <a class="btn-teal" href="https://wa.me/525535919044?text=Hola%2C%20me%20interesa%20el%20Lote%2067%20Modelo%20D%20Doble%20Altura%20en%20Albarella" target="_blank">Solicitar información</a>
   </div>
   <div class="reveal-left">
+    <div class="tour-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg> Recorrido fotográfico</div>
+    <button class="expand-btn" onclick="openLightbox('D')" aria-label="Ampliar galería">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+    </button>
     <div class="photos" id="photosD">
       <div class="rph active" style="background-image:url('https://drive.google.com/thumbnail?id=1w1KBYHQRSUCB9hM5vG1L3Xt4WXQ7kpnu&sz=w900')"></div>
       <div class="rph" style="background-image:url('https://drive.google.com/thumbnail?id=1LTMnSxkPdbDWxD9YEsuQEvob4ZEDuMlG&sz=w900')"></div>
@@ -233,16 +290,15 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
     </div>
     <button class="arr prev" data-id="D" data-dir="-1">&#8592;</button>
     <button class="arr next" data-id="D" data-dir="1">&#8594;</button>
-    <div class="dots" id="dotsD">
-      <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-      <span class="dot"></span><span class="dot"></span>
-    </div>
+    <div class="thumbs" id="dotsD"></div>
   </div>
   <div class="reveal-right">
     <div class="rtag soon"><span class="rtag-dot"></span>Lista en 60 días</div>
     <h3 class="r-title">Modelo D<br><em>Doble Altura</em></h3>
+    <a class="plano-cta" href="https://wa.me/525535919044?text=Hola%2C%20quiero%20el%20plano%20arquitect%C3%B3nico%20del%20Modelo%20D%20de%20Albarella" target="_blank">
+      <svg class="plano-cta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 12 4l9 5v10l-9 5-9-5z"/><path d="M3 9l9 5 9-5M12 14v10"/></svg>
+      <div><div class="plano-cta-t">Plano arquitectónico del Modelo D</div><div class="plano-cta-d">Solicítalo con tu asesor y te lo enviamos por WhatsApp</div></div>
+    </a>
     <div class="r-specs">
       <div><div class="rs-l">Lote</div><div class="rs-v">67</div></div>
       <div><div class="rs-l">Plantas</div><div class="rs-v">2</div></div>
@@ -258,10 +314,19 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
 
 <!-- LOTES -->
 <section class="lotes-sec fade-up" id="lotes">
+  <div class="lotes-pitch">
+    <div class="overline gold">Tu casa, tu estilo</div>
+    <h2 class="h2 sand">Aquí no todas las casas <em style="color:var(--teal)">son iguales.</em></h2>
+    <p class="lotes-pitch-desc">En Albarella no compras un modelo repetido lote tras lote. Compras un terreno para construir la casa que tú imaginaste, con el arquitecto que tú elijas y a tu propio ritmo — dentro de una privada ya consolidada, con seguridad, amenidades y 80 familias como vecinos.</p>
+  </div>
   <div class="lotes-top">
     <div>
-      <div class="overline gold">Inversión · Terrenos</div>
-      <h2 class="h2 sand">Lotes <em style="color:var(--teal)">residenciales</em></h2>
+      <div class="lotes-bullets">
+        <div class="lb-item"><span class="lb-dot"></span>Últimos lotes residenciales desde <strong>303 m²</strong> hasta <strong>478 m²</strong></div>
+        <div class="lb-item"><span class="lb-dot"></span>Precio desde <strong>$1.1 MDP</strong></div>
+        <div class="lb-item"><span class="lb-dot"></span>Enganche de <strong>10%</strong></div>
+        <div class="lb-item"><span class="lb-dot"></span>Hasta <strong>60 meses</strong> de financiamiento</div>
+      </div>
     </div>
     <div>
       <div class="lnums">
@@ -270,7 +335,7 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
         <div class="ln"><div class="ln-n">478 m²</div><div class="ln-l">Máximo</div></div>
       </div>
       <div class="lotes-btns" style="margin-top:16px">
-        <a class="btn-map" href="https://drive.google.com/thumbnail?id=1fcb4b7ANQOLQ-HQJP7zLpfXRLPKxDYXU&sz=w1200" target="_blank">Ver Master Plan 🗺️</a>
+        <a class="btn-map" href="https://drive.google.com/thumbnail?id=1fcb4b7ANQOLQ-HQJP7zLpfXRLPKxDYXU&sz=w1200" target="_blank">Ver Master Plan <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6.5v14L9 18l6 2.5 6-2.5v-14L15 6.5 9 4z"/><path d="M9 4v14M15 6.5v14"/></svg></a>
       </div>
     </div>
   </div>
@@ -304,6 +369,53 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
   <a class="btn-outline-gold" href="https://wa.me/525535919044?text=Hola%2C%20me%20interesan%20los%20lotes%20de%20Albarella" target="_blank">Consultar →</a>
 </div>
 
+<!-- FINANCIAMIENTO -->
+<section class="fin-sec fade-up">
+  <div class="fin-hdr">
+    <div class="overline gold">Facilidades de pago</div>
+    <h2 class="h2 sand">Tu financiamiento, <em>a tu medida.</em></h2>
+    <p class="fin-desc">Trabajamos con todas las instituciones y créditos más usados en México. Sea cual sea tu situación, hay un camino para que Albarella sea tuyo.</p>
+  </div>
+  <div class="fin-grid">
+    <div class="fin-card">
+      <svg class="fin-card-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-7h6v7"/></svg>
+      <div class="fin-card-t">Crédito Infonavit</div>
+      <div class="fin-card-d">Infonavit tradicional, Infonavit Total y cofinanciamiento con la banca. Aceptamos tu crédito para casas y lotes con construcción.</div>
+    </div>
+    <div class="fin-card">
+      <svg class="fin-card-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg>
+      <div class="fin-card-t">Crédito bancario</div>
+      <div class="fin-card-d">Trabajamos con BBVA, Santander, Banorte, HSBC, Scotiabank, Citibanamex y Banregio. Te ayudamos a comparar y elegir la mejor tasa.</div>
+    </div>
+    <div class="fin-card">
+      <svg class="fin-card-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12h6M12 9v6"/></svg>
+      <div class="fin-card-t">Financiamiento directo</div>
+      <div class="fin-card-d">Para lotes residenciales: enganche desde 10% y hasta 60 meses de financiamiento directo con el desarrollo, sin intermediarios.</div>
+    </div>
+  </div>
+  <div class="fin-bank-row">
+    <span class="fin-bank">Infonavit</span>
+    <span class="fin-bank">Fovissste</span>
+    <span class="fin-bank">Infonavit Total</span>
+    <span class="fin-bank">BBVA</span>
+    <span class="fin-bank">Santander</span>
+    <span class="fin-bank">Banorte</span>
+    <span class="fin-bank">HSBC</span>
+    <span class="fin-bank">Scotiabank</span>
+    <span class="fin-bank">Citibanamex</span>
+    <span class="fin-bank">Banregio</span>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-arr prev" onclick="lbNav(-1)">&#8592;</button>
+  <img class="lb-img" id="lbImg" src="" alt="Albarella">
+  <button class="lb-arr next" onclick="lbNav(1)">&#8594;</button>
+  <div class="lb-caption" id="lbCaption"></div>
+</div>
+
 <footer>
   <div class="f-logo"><span>✦</span> Albarella · Privada Residencial</div>
   <div class="f-center"><a class="f-tel" href="tel:+525535919044">+52 55 3591 9044</a><div class="f-hours">Lun–Sáb 9am–6pm · Dom 9am–3pm</div></div>
@@ -319,18 +431,33 @@ burger?.addEventListener('click',()=>mm.classList.add('open'));
 mc?.addEventListener('click',()=>mm.classList.remove('open'));
 document.querySelectorAll('.m-link').forEach(l=>l.addEventListener('click',()=>mm.classList.remove('open')));
 
-// CAROUSELES
-function makeCarousel(id,total){
+// GALERÍAS + ROOM TOUR
+const galleries={};
+function extractUrl(el){
+  const m=el.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/);
+  return m?m[1]:'';
+}
+function makeCarousel(id){
+  const photos=[...document.querySelectorAll(`#photos${id} .rph`)];
+  const total=photos.length;
+  const urls=photos.map(extractUrl);
+  galleries[id]=urls;
+  const thumbWrap=document.getElementById(`dots${id}`);
+  const thumbs=urls.map((u,i)=>{
+    const t=document.createElement('div');
+    t.className='thumb'+(i===0?' active':'');
+    t.style.backgroundImage=`url('${u.replace('w900','w200')}')`;
+    t.addEventListener('click',()=>{clearInterval(timer);goTo(i);play()});
+    thumbWrap.appendChild(t);
+    return t;
+  });
   let cur=0,timer,started=false;
-  const photos=document.querySelectorAll(`#photos${id} .rph`);
-  const dots=document.querySelectorAll(`#dots${id} .dot`);
   function goTo(n){
-    photos[cur].classList.remove('active');dots[cur].classList.remove('active');
+    photos[cur].classList.remove('active');thumbs[cur].classList.remove('active');
     cur=(n+total)%total;
-    photos[cur].classList.add('active');dots[cur].classList.add('active');
+    photos[cur].classList.add('active');thumbs[cur].classList.add('active');
   }
   function play(){clearInterval(timer);timer=setInterval(()=>goTo(cur+1),3500)}
-  dots.forEach((d,i)=>d.addEventListener('click',()=>{clearInterval(timer);goTo(i);play()}));
   document.querySelectorAll(`.arr[data-id="${id}"]`).forEach(btn=>{
     btn.addEventListener('click',()=>{clearInterval(timer);goTo(cur+parseInt(btn.dataset.dir));play()});
   });
@@ -338,12 +465,40 @@ function makeCarousel(id,total){
     entries.forEach(e=>{if(e.isIntersecting&&!started){started=true;goTo(0);setTimeout(play,600)}});
   },{threshold:0.4}).observe(document.querySelector(`#photos${id}`));
 }
-makeCarousel('C',10);makeCarousel('D',11);
+makeCarousel('C');makeCarousel('D');
+
+// LIGHTBOX
+let lbId=null,lbIdx=0;
+function openLightbox(id){
+  lbId=id;lbIdx=0;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+  lbShow();
+}
+function lbShow(){
+  const urls=galleries[lbId];
+  document.getElementById('lbImg').src=urls[lbIdx];
+  document.getElementById('lbCaption').textContent=`Modelo ${lbId} · ${lbIdx+1} / ${urls.length}`;
+}
+function lbNav(dir){
+  const urls=galleries[lbId];
+  lbIdx=(lbIdx+dir+urls.length)%urls.length;
+  lbShow();
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',(e)=>{
+  if(!document.getElementById('lightbox').classList.contains('open'))return;
+  if(e.key==='Escape')closeLightbox();
+  if(e.key==='ArrowRight')lbNav(1);
+  if(e.key==='ArrowLeft')lbNav(-1);
+});
 
 // FADE UP
-new IntersectionObserver((e)=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:0.1})
-  .observe&&document.querySelectorAll('.fade-up').forEach(el=>
-    new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:0.1}).observe(el));
+const revealObs=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>revealObs.observe(el));
 
 // BARRA LOTES
 new IntersectionObserver((e)=>{if(e[0].isIntersecting)setTimeout(()=>document.getElementById('dispFill').style.width='21%',300)},{threshold:0.5}).observe(document.querySelector('.disp-bar-sec'));
