@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catálogo de Modelos · Albarella Privada Residencial</title>
-<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,700;1,200;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-:root{--ink:#131E27;--ink2:#0E1820;--sand2:#F5EFE6;--stone2:#C4A882;--teal:#4BA897;--teal2:#6BBFB4;--white:#F5EFE6;--muted:#7A9A91}
+:root{--ink:#131E27;--ink2:#0E1820;--sand2:#F5EFE6;--stone2:#C4A882;--teal:#4BA897;--teal2:#6BBFB4;--white:#F5EFE6;--muted:#7A9A91;--serif:'Fraunces',serif}
 body{font-family:'Jost',sans-serif;font-weight:300;background:var(--sand2);color:var(--ink);overflow-x:hidden}
 
 /* WA */
@@ -37,7 +37,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 /* PAGE HEADER */
 .page-hdr{padding:120px 60px 64px;background:var(--ink);border-bottom:1px solid rgba(245,239,230,.05)}
 .overline{font-size:9px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
-.h2{font-size:clamp(28px,3.5vw,48px);font-weight:200;line-height:1.1;letter-spacing:-.01em;color:var(--white)}
+.h2{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:500;line-height:1.1;letter-spacing:-.01em;color:var(--white)}
 .h2 em{font-style:italic;color:var(--teal2)}
 .page-hdr-sub{font-size:14px;font-weight:300;line-height:1.8;color:rgba(245,239,230,.5);max-width:540px;margin-top:16px}
 
@@ -52,7 +52,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .catalogo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(196,168,130,.12)}
 
 /* MODELO CARD */
-.modelo-card{background:#fff;display:flex;flex-direction:column;overflow:hidden;transition:background .3s;position:relative}
+.modelo-card{background:#fff;display:flex;flex-direction:column;overflow:hidden;transition:background .3s,transform .3s,box-shadow .3s;position:relative}
+.modelo-card:hover{transform:translateY(-5px);box-shadow:0 16px 32px rgba(19,30,39,.14)}
 .modelo-card:hover{background:var(--ink)}
 
 /* FOTO */
@@ -81,7 +82,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 /* CONTENIDO */
 .modelo-body{padding:24px 24px 20px;flex:1;display:flex;flex-direction:column}
-.modelo-nombre{font-size:18px;font-weight:300;color:var(--ink);margin-bottom:4px;letter-spacing:-.01em;transition:color .3s}
+.modelo-nombre{font-family:var(--serif);font-size:19px;font-weight:500;color:var(--ink);margin-bottom:4px;letter-spacing:-.01em;transition:color .3s}
 .modelo-card:hover .modelo-nombre{color:var(--white)}
 .modelo-sub{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;transition:color .3s}
 .modelo-card:hover .modelo-sub{color:rgba(245,239,230,.4)}
@@ -109,7 +110,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 /* SECCIÓN DISPONIBLES CTA */
 .disponibles-cta{background:var(--ink);padding:52px 60px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .dc-text .overline{color:var(--teal2)}
-.dc-title{font-size:clamp(22px,2.5vw,34px);font-weight:200;color:var(--white);margin-top:8px;letter-spacing:-.01em}
+.dc-title{font-family:var(--serif);font-size:clamp(22px,2.5vw,34px);font-weight:500;color:var(--white);margin-top:8px;letter-spacing:-.01em}
 .dc-title em{font-style:italic;color:var(--stone2)}
 .dc-btns{display:flex;gap:12px;flex-wrap:wrap}
 .btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--stone2);color:var(--ink);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:14px 28px;text-decoration:none;transition:background .2s}
@@ -127,7 +128,10 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
 .f-hours{font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,239,230,.32)}
 .f-right{text-align:right;font-size:10px;color:rgba(245,239,230,.2);font-weight:300;line-height:1.8}
 
-.fade-up{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.fade-up.d1{transition-delay:.08s}
+.fade-up.d2{transition-delay:.16s}
+.fade-up.d3{transition-delay:.24s}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
 @media(max-width:1100px){.catalogo-grid{grid-template-columns:1fr 1fr}}
@@ -443,7 +447,7 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
     <div class="dc-title">3 modelos con <em>entrega próxima.</em></div>
   </div>
   <div class="dc-btns">
-    <a class="btn-gold" href="disponible.html">🔑 Ver disponibles ahora</a>
+    <a class="btn-gold" href="disponible.html"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="14.5" r="4"/><path d="M10.5 11.5 19 3l1.5 1.5M17 5.5 19 7.5M14.5 8 16 9.5"/></svg> Ver disponibles ahora</a>
     <a class="btn-outline-w" href="https://wa.me/525535919044?text=Hola%2C%20vi%20el%20cat%C3%A1logo%20y%20quiero%20informaci%C3%B3n%20sobre%20los%20modelos%20de%20Albarella" target="_blank">Hablar con un asesor</a>
   </div>
 </div>
