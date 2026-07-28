@@ -59,18 +59,25 @@ nav.scrolled{background:rgba(14,24,32,.97);backdrop-filter:blur(12px);padding:12
 .mobile-close{position:absolute;top:24px;right:24px;background:none;border:none;cursor:pointer;color:rgba(245,239,230,.4);font-size:24px;line-height:1}
 
 /* HERO */
-.hero{height:100vh;min-height:600px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero{height:100vh;min-height:600px;position:relative;overflow:hidden}
+.hero-slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;transition:opacity 1.2s ease;z-index:1}
+.hero-slide.active{opacity:1;z-index:2}
+.hero-dots{position:absolute;bottom:36px;right:60px;z-index:5;display:flex;gap:8px}
+.hero-dot{width:22px;height:3px;background:rgba(245,239,230,.3);cursor:pointer;transition:background .3s}
+.hero-dot.active{background:var(--stone2)}
+@keyframes corner-badge-pulse{0%,100%{box-shadow:0 0 0 0 rgba(184,118,63,.4)}50%{box-shadow:0 0 0 9px rgba(184,118,63,0)}}
+.hero-badge-corner{position:absolute;top:100px;right:32px;z-index:6;display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;letter-spacing:.02em;padding:10px 18px 10px 14px;text-decoration:none;animation:corner-badge-pulse 2.4s ease-in-out infinite;box-shadow:0 6px 20px rgba(184,118,63,.3);transition:background .2s,transform .2s}
+.hero-badge-corner:hover{background:#CC8749;transform:translateY(-2px)}
+.hero-badge-corner svg{width:14px;height:14px;flex-shrink:0}
+@media(max-width:900px){.hero-badge-corner{top:88px;right:16px;font-size:10px;padding:8px 14px 8px 10px}.hero-dots{right:24px;bottom:24px}}
 .hero-bg{position:absolute;inset:0;background-image:url('https://drive.google.com/thumbnail?id=18ZPRytUgBI1W13mdymkvqxgVbHIXftlt&sz=w1600');background-size:cover;background-position:center;transform:scale(1.05);transition:transform 12s ease}
 .hero-bg.ken{transform:scale(1)}
 .hero-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,24,32,.95) 0%,rgba(14,24,32,.4) 55%,rgba(14,24,32,.1) 100%)}
 .hero-content{position:relative;z-index:2;padding:0 60px 72px;width:100%}
 .hero-eyebrow{font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--stone2);margin-bottom:20px;display:inline-flex;align-items:center;gap:16px;text-shadow:0 1px 8px rgba(14,24,32,.9)}
-@keyframes badge-pulse{0%,100%{box-shadow:0 0 0 0 rgba(184,118,63,.4)}50%{box-shadow:0 0 0 9px rgba(184,118,63,0)}}
-.hero-badge{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;font-size:13px;font-weight:700;letter-spacing:.03em;padding:11px 20px 11px 16px;margin-bottom:22px;animation:badge-pulse 2.4s ease-in-out infinite;box-shadow:0 6px 20px rgba(184,118,63,.35);text-decoration:none;cursor:pointer;transition:background .2s,transform .2s}
-.hero-badge:hover{background:#CC8749;transform:translateY(-2px)}
-.hero-badge svg{width:16px;height:16px;flex-shrink:0}
 .hero-eyebrow::before{content:'';display:block;width:48px;height:1px;background:var(--stone2)}
 .hero h1{font-family:var(--serif);font-size:clamp(40px,5.5vw,78px);font-weight:500;line-height:1.05;color:var(--white);text-shadow:0 2px 24px rgba(14,24,32,.6);margin-bottom:28px;letter-spacing:-.01em}
+.hero-price{font-family:'Jost',sans-serif;font-style:normal;font-weight:600;color:var(--stone2);letter-spacing:-.01em}
 .hero h1 em{font-style:italic;color:var(--stone2);font-weight:300}
 .hero h1 strong{font-weight:500;color:var(--white)}
 .hero-lower{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:28px}
@@ -81,10 +88,6 @@ nav.scrolled{background:rgba(14,24,32,.97);backdrop-filter:blur(12px);padding:12
 .btn-gold:hover{background:#D4B870}
 .btn-outline{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(245,239,230,.35);color:var(--white);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:16px 28px;text-decoration:none;transition:border-color .2s;white-space:nowrap}
 .btn-outline:hover{border-color:var(--stone2);color:var(--stone2)}
-.hero-nums{display:flex;flex-shrink:0;gap:36px;border-left:1px solid rgba(196,168,130,.2);padding-left:36px}
-.hnum-n{font-size:40px;font-weight:200;color:var(--white);line-height:1;text-shadow:0 2px 16px rgba(14,24,32,.7)}
-.hnum-n small{font-size:18px;color:var(--stone2)}
-.hnum-l{font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,239,230,.4);margin-top:5px}
 
 /* BANDA */
 @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 3px rgba(75,168,151,.25),0 0 0 6px rgba(75,168,151,.08)}50%{box-shadow:0 0 0 5px rgba(75,168,151,.35),0 0 0 10px rgba(75,168,151,.04)}}
@@ -227,7 +230,6 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
   .nav-center{display:none}
   .nav-burger{display:flex}
   .hero-content{padding:0 24px 48px}
-  .hero-nums{display:none}
   .banda{padding:12px 24px}
   .dash-grid{grid-template-columns:1fr}
   .dashboard{padding:0}
@@ -314,29 +316,47 @@ footer{background:var(--ink2);border-top:1px solid rgba(196,168,130,.08);padding
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg" id="heroBg"></div>
-  <div class="hero-veil"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Privada Residencial Premium · Cholul, Mérida</div>
-    <a class="hero-badge" href="disponible.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></svg>
-      Tu casa lista en 60 días
-    </a>
-    <h1>80 familias<br>ya encontraron<br><em>su hogar aquí.</em></h1>
-    <div class="hero-lower">
-      <div>
-        <p class="hero-desc">Tu última oportunidad de vivir en una comunidad <em>premium consolidada.</em></p>
-        <div class="hero-btns">
-          <a class="btn-gold" href="#" onclick="showLead(event,'disponible.html')">VER DISPONIBILIDAD →</a>
-          <a class="btn-outline" href="#" onclick="showLead(event,'disponible.html#lotes')">Ver lotes desde $1.1M</a>
+  <a class="hero-badge-corner" href="disponible.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></svg>
+    Tu casa lista en 60 días
+  </a>
+  <div class="hero-slide active">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-veil"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Privada Residencial Premium · Cholul, Mérida</div>
+      <h1>80 familias<br>ya encontraron<br><em>su hogar aquí.</em></h1>
+      <div class="hero-lower">
+        <div>
+          <p class="hero-desc">Tu última oportunidad de vivir en una comunidad <em>premium consolidada.</em></p>
+          <div class="hero-btns">
+            <a class="btn-gold" href="#" onclick="showLead(event,'disponible.html')">VER DISPONIBILIDAD →</a>
+            <a class="btn-outline" href="#" onclick="showLead(event,'disponible.html#lotes')">Ver lotes desde $1.1M</a>
+          </div>
         </div>
       </div>
-      <div class="hero-nums">
-        <div><div class="hnum-n">2</div><div class="hnum-l">En 60 días</div></div>
-        <div><div class="hnum-n">19</div><div class="hnum-l">Lotes</div></div>
-        <div><div class="hnum-n">80</div><div class="hnum-l">Familias</div></div>
+    </div>
+  </div>
+  <div class="hero-slide">
+    <div class="hero-bg ken" style="background-image:url('https://drive.google.com/thumbnail?id=15SbDvef6QHXcmexC9UOLWn8ge2pADk8Q&sz=w1600')"></div>
+    <div class="hero-veil"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Inversión · Norte de Mérida</div>
+      <h1>Últimos lotes<br>premium <em>desde</em><br><span class="hero-price">$1.10 MDP.</span></h1>
+      <div class="hero-lower">
+        <div>
+          <p class="hero-desc">En la zona de mayor plusvalía del <em>norte de Mérida.</em></p>
+          <div class="hero-btns">
+            <a class="btn-gold" href="#" onclick="showLead(event,'disponible.html#lotes')">VER LOTES →</a>
+            <a class="btn-outline" href="#" onclick="showLead(event,'disponible.html')">Ver casas disponibles</a>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+  <div class="hero-dots">
+    <span class="hero-dot active" data-i="0"></span>
+    <span class="hero-dot" data-i="1"></span>
   </div>
 </section>
 
@@ -548,6 +568,18 @@ setTimeout(()=>intro.classList.add('visible'),80);
 setTimeout(()=>{intro.classList.add('hidden');main.classList.add('visible');setTimeout(()=>heroBg.classList.add('ken'),100)},4000);
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+
+// HERO SLIDESHOW
+const heroSlides=document.querySelectorAll('.hero-slide'),heroDots=document.querySelectorAll('.hero-dot');
+let heroCur=0,heroTimer;
+function heroGoTo(n){
+  heroSlides[heroCur].classList.remove('active');heroDots[heroCur].classList.remove('active');
+  heroCur=(n+heroSlides.length)%heroSlides.length;
+  heroSlides[heroCur].classList.add('active');heroDots[heroCur].classList.add('active');
+}
+function heroPlay(){clearInterval(heroTimer);heroTimer=setInterval(()=>heroGoTo(heroCur+1),4500)}
+heroDots.forEach((d,i)=>d.addEventListener('click',()=>{heroGoTo(i);heroPlay()}));
+heroPlay();
 const revealObs=new IntersectionObserver((entries)=>{entries.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:0.15});
 document.querySelectorAll('.fade-up').forEach(el=>revealObs.observe(el));
 const burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu'),mc=document.getElementById('menuClose');
